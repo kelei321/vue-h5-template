@@ -6,7 +6,7 @@ export function getDemoListApi(params: DemoListParams) {
 }
 
 export function getDemoDetailApi(id: string) {
-  return http.get<DemoItem>(`/list/${id}`)
+  return http.get<DemoItem | null>(`/list/${id}`)
 }
 
 export function uploadDemoFileApi(file: Blob) {
