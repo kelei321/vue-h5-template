@@ -1,4 +1,4 @@
-import 'vant/lib/index.css'
+import 'vant/es/toast/style'
 import './styles/tailwind.css'
 import './styles/index.scss'
 
