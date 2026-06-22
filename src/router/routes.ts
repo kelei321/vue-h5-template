@@ -75,7 +75,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'admin-demo',
         name: 'AdminDemo',
-        component: () => import('@/views/exception/403.vue'),
+        component: () => import('@/views/admin-demo/index.vue'),
         meta: {
           title: '管理员页面',
           requiresAuth: true,
