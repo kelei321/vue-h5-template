@@ -19,6 +19,11 @@ export function shouldBlockRepeat(url: string, options: AppRequestOptions) {
   const now = Date.now()
   const last = pendingRequests.get(key)
   pendingRequests.set(key, now)
+  globalThis.setTimeout(() => {
+    if (pendingRequests.get(key) === now) {
+      pendingRequests.delete(key)
+    }
+  }, REPEAT_INTERVAL)
 
   return Boolean(last && now - last < REPEAT_INTERVAL)
 }
