@@ -12,7 +12,7 @@ import { formatDateTime } from '@/utils/dayjs'
 const route = useRoute()
 const id = computed(() => String(route.params.id || ''))
 
-const { data: detail, loading, run } = useRequest<DemoItem, [string]>(getDemoDetailApi)
+const { data: detail, loading, run } = useRequest<DemoItem | null, [string]>(getDemoDetailApi)
 
 const statusMap: Record<DemoStatus, { text: string; type: 'primary' | 'success' | 'warning' }> = {
   pending: { text: '待处理', type: 'warning' },
