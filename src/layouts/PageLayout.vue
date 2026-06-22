@@ -26,6 +26,19 @@ function goBack() {
       safe-area-inset-top
       @click-left="goBack"
     />
-    <RouterView />
+    <RouterView v-slot="{ Component, route: childRoute }">
+      <KeepAlive>
+        <component
+          :is="Component"
+          v-if="childRoute.meta.keepAlive"
+          :key="childRoute.name || childRoute.path"
+        />
+      </KeepAlive>
+      <component
+        :is="Component"
+        v-if="!childRoute.meta.keepAlive"
+        :key="childRoute.fullPath"
+      />
+    </RouterView>
   </main>
 </template>
