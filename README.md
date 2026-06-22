@@ -222,13 +222,21 @@ const { hasPermission, hasRole } = usePermission()
 
 ## Vant 自动按需引入
 
-通过 `unplugin-vue-components` + `VantResolver` 自动引入 Vant 组件。
+通过 `unplugin-vue-components` + `VantResolver({ importStyle: 'css' })` 自动引入 Vant 组件和对应组件样式。
 
 页面中可直接使用：
 
 ```vue
 <van-button type="primary">按钮</van-button>
 ```
+
+项目没有在 `main.ts` 全量引入 `vant/lib/index.css`。模板中使用了 `showToast`、`showLoadingToast` 等函数式 Toast，因此只在入口单独引入 Toast 样式：
+
+```ts
+import 'vant/es/toast/style'
+```
+
+如果后续新增其他 Vant 函数式 API，请按需补充对应样式入口。
 
 ## Tailwind CSS
 
@@ -258,31 +266,19 @@ SCSS 主要用于：
 
 1. 修改 `.env.production` 中的 `VITE_API_BASE_URL`。
 2. 将 `VITE_MOCK_ENABLED=false`。
-3. 按真实后端返回结构调整 `src/utils/request/index.ts` 中的 `successCodes`、`codeField`、`dataField`、`messageFields`。
+3. 将真实接口返回结构适配到 `code/message/data`，或调整 `src/utils/request` 的响应处理配置。
 
 ## 部署
 
 ### Cloudflare Pages
 
-构建命令：
-
-```bash
-pnpm install --frozen-lockfile && pnpm build
-```
-
-输出目录：
-
-```txt
-dist
-```
+- Build command：`pnpm build`
+- Build output directory：`dist`
+- Node.js version：`22`
 
 ### GitHub Pages
 
-当前 `base` 默认为 `/`。如果部署到仓库子路径，修改 `vite.config.ts`：
-
-```ts
-base: '/vue-h5-template/'
-```
+默认 `base: '/'`。如果部署到仓库子路径，需要修改 `vite.config.ts` 的 `base`。
 
 ## License
 
