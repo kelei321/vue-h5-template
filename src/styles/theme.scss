@@ -1,0 +1,19 @@
+:root {
+  --app-primary-color: #1989fa;
+  --app-page-bg: #f5f7fb;
+  --app-card-bg: #ffffff;
+  --app-text-color: #1f2937;
+  --app-sub-text-color: #6b7280;
+  --app-border-color: #edf0f5;
+  --app-radius-lg: 16px;
+  --app-tabbar-height: 56px;
+  --app-safe-area-bottom: env(safe-area-inset-bottom);
+}
+
+[data-theme='dark'] {
+  --app-page-bg: #111827;
+  --app-card-bg: #1f2937;
+  --app-text-color: #f9fafb;
+  --app-sub-text-color: #9ca3af;
+  --app-border-color: #374151;
+}

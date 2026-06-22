@@ -1,0 +1,17 @@
+@use './reset.scss';
+@use './theme.scss';
+@use './vant.scss';
+
+.app-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--app-page-bg);
+}
+
+.app-safe-bottom {
+  padding-bottom: calc(var(--app-safe-area-bottom) + 16px);
+}
+
+.safe-tabbar-bottom {
+  padding-bottom: calc(var(--app-tabbar-height) + var(--app-safe-area-bottom) + 16px);
+}

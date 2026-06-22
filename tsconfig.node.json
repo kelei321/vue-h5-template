@@ -1,0 +1,19 @@
+{
+  "include": ["vite.config.ts", "eslint.config.ts", "mock/**/*.ts", "src/api/types/**/*.ts"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "ignoreDeprecations": "6.0",
+    "skipLibCheck": true
+  }
+}
