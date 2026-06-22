@@ -13,7 +13,20 @@ function switchTab(path: string) {
 
 <template>
   <main class="app-page min-h-screen safe-tabbar-bottom">
-    <RouterView />
+    <RouterView v-slot="{ Component, route: childRoute }">
+      <KeepAlive>
+        <component
+          :is="Component"
+          v-if="childRoute.meta.keepAlive"
+          :key="childRoute.name || childRoute.path"
+        />
+      </KeepAlive>
+      <component
+        :is="Component"
+        v-if="!childRoute.meta.keepAlive"
+        :key="childRoute.fullPath"
+      />
+    </RouterView>
     <van-tabbar
       :model-value="route.path"
       fixed
