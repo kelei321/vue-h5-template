@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       Components({
         dts: 'src/components.d.ts',
-        resolvers: [VantResolver(), IconsResolver({ prefix: 'i' })]
+        resolvers: [VantResolver({ importStyle: 'css' }), IconsResolver({ prefix: 'i' })]
       }),
       Icons({
         compiler: 'vue3',
