@@ -45,7 +45,10 @@ export function setupRouterGuard(router: Router) {
       }
     }
 
+    const hasAccessRule = Boolean(to.meta.roles?.length || to.meta.permissions?.length)
+
     if (
+      hasAccessRule &&
       !canAccess(userStore.userInfo, { roles: to.meta.roles, permissions: to.meta.permissions })
     ) {
       return '/403'
